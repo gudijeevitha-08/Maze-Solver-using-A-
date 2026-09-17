@@ -1,1 +1,185 @@
+## TEST CASES
+
+The A* Maze Solver was tested using different maze configurations to verify path finding, shortest path calculation, obstacle handling, unreachable destinations, and comparison with Breadth-First Search (BFS).
+
+### Test Case 1: Normal Solvable Maze
+
+**Test Case ID:** TC01
+**Description:** Test the algorithm using the given maze with a reachable goal.
+
+**Input:**
+
+* Start position: `(0, 0)`
+* Goal position: `(5, 5)`
+* Maze: 6 × 6 grid with walls and open paths
+
+**Expected Result:**
+
+* A* should find a valid path from the start to the goal.
+* BFS should also find a valid path.
+* Both algorithms should find a shortest path with the same path cost.
+
+**Expected Path Cost:** `10`
+
+**Result:** Pass
+
+---
+
+### Test Case 2: Start and Goal Are the Same
+
+**Test Case ID:** TC02
+**Description:** Test the algorithm when the starting position and goal position are identical.
+
+**Input:**
+
+* Start position: `(0, 0)`
+* Goal position: `(0, 0)`
+
+**Expected Result:**
+
+* The algorithm should immediately identify that the goal has been reached.
+* The path should contain only `(0, 0)`.
+* The path cost should be `0`.
+
+**Expected Output:**
+
+```text
+Path: [(0, 0)]
+Path Cost: 0
+```
+
+**Result:** Pass
+
+---
+
+### Test Case 3: Completely Blocked Goal
+
+**Test Case ID:** TC03
+**Description:** Test the algorithm when there is no possible path between the start and goal.
+
+**Input:**
+
+```text
+0 1 1
+1 1 1
+1 1 0
+```
+
+* Start position: `(0, 0)`
+* Goal position: `(2, 2)`
+
+Here, `0` represents an open cell and `1` represents a wall.
+
+**Expected Result:**
+
+* The algorithm should determine that the goal cannot be reached.
+* No path should be returned.
+
+**Expected Output:**
+
+```text
+Path: []
+```
+
+**Result:** Pass
+
+---
+
+### Test Case 4: Open Maze
+
+**Test Case ID:** TC04
+**Description:** Test the algorithm on a maze without obstacles.
+
+**Input:**
+
+```text
+0 0 0
+0 0 0
+0 0 0
+```
+
+* Start position: `(0, 0)`
+* Goal position: `(2, 2)`
+
+**Expected Result:**
+
+* A* should find the shortest path.
+* BFS should also find the shortest path.
+* The shortest path cost should be `4`.
+
+**Expected Path Cost:**
+
+```text
+4
+```
+
+**Result:** Pass
+
+---
+
+### Test Case 5: Maze With Multiple Obstacles
+
+**Test Case ID:** TC05
+**Description:** Test whether the algorithm can correctly navigate around multiple walls.
+
+**Input:**
+
+```text
+0 0 0 1 0
+1 1 0 1 0
+0 0 0 0 0
+0 1 1 1 1
+0 0 0 0 0
+```
+
+* Start position: `(0, 0)`
+* Goal position: `(4, 4)`
+
+**Expected Result:**
+
+* The algorithm should avoid all cells containing walls.
+* A valid path should be found if the goal is reachable.
+* The path should contain only valid open cells.
+
+**Result:** Pass
+
+---
+
+### Test Case 6: A* and BFS Comparison
+
+**Test Case ID:** TC06
+**Description:** Compare A* and BFS on the same maze.
+
+**Input:**
+
+* Same maze
+* Same start position
+* Same goal position
+
+**Expected Result:**
+
+* Both algorithms should find a shortest path because every movement has the same cost.
+* A* uses the Manhattan-distance heuristic to guide the search toward the goal.
+* BFS explores nodes level by level.
+* The number of expanded nodes can be different between the two algorithms.
+
+**Comparison Parameters:**
+
+| Parameter      | A*                  | BFS                 |
+| -------------- | ------------------- | ------------------- |
+| Path Found     | Yes                 | Yes                 |
+| Shortest Path  | Yes                 | Yes                 |
+| Path Cost      | Same                | Same                |
+| Heuristic Used | Manhattan Distance  | No                  |
+| Nodes Expanded | Recorded by program | Recorded by program |
+
+**Result:** Pass
+
+---
+
+## TESTING SUMMARY
+
+The test cases verify that the maze solver can handle different situations, including normal maze solving, an identical start and goal, unreachable goals, open mazes, and mazes containing multiple obstacles. The results also allow A* and BFS to be compared based on path cost and the number of nodes expanded.
+
+The testing confirms that A* can use the Manhattan-distance heuristic to search for a shortest path while BFS provides a baseline shortest-path search for the same unit-cost maze.
 
