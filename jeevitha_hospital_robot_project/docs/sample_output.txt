@@ -1,0 +1,67 @@
+=== PHASE 1: MAZE SOLVER ===
+Original maze (# wall, . free, S start, G goal):
+S . . . . . .
+. # # # # # .
+. . . . . # .
+. # # # . # .
+. . . . . . .
+. # # # # # .
+. . . . . . G
+
+BFS result
+S * * * * * *
+. # # # # # *
+. . . . . # *
+. # # # . # *
+. . . . . . *
+. # # # # # *
+. . . . . . G
+Path found: True | Path steps: 12 | Nodes expanded: 33
+
+A* result
+S * * * * * *
+. # # # # # *
+. . . . . # *
+. # # # . # *
+. . . . . . *
+. # # # # # *
+. . . . . . G
+Path found: True | Path steps: 12 | Nodes expanded: 33
+
+=== PHASE 2: HOSPITAL DELIVERY PLANNER ===
+Delivery schedule (CSP + MRV + AC-3):
+{'Medicine-ICU': '09:00', 'Sample-Lab': '10:00', 'Medicine-Ward': '11:00'}
+
+Route with dynamic obstacle:
+S * * * * * *
+. # # # # # *
+. . # . . # *
+. # # # . # *
+. . . . . . *
+. # # # # # *
+. . . . . . G
+Path steps: 12 | Nodes expanded: 29
+Explanation:
+- Rule fired: cell (2, 2) is busy/blocked; route planner avoids it.
+- Safety rule: deliveries entering ICU zones require a sterile robot.
+
+--- TESTS ---
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 718, in _warm_feature_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/spreadsheet_warmup.py", line 509, in _warm_drawing_and_image_flows
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/generated/interface/models.py", line 32861, in bring_to_front
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/remote.py", line 764, in __call__
+  File "/tmp/tmp.QlpUkOUI9D/artifact_tool_v2-2.8.66/artifact_tool/rpc/client.py", line 175, in call
+artifact_tool.rpc.client.RemoteError: Element ordering requires an owning element collection.
+test_astar_and_bfs_optimal_cost (test_project.ProjectTests.test_astar_and_bfs_optimal_cost) ... ok
+test_csp_no_conflict (test_project.ProjectTests.test_csp_no_conflict) ... ok
+test_manhattan (test_project.ProjectTests.test_manhattan) ... ok
+test_route_dynamic_obstacle (test_project.ProjectTests.test_route_dynamic_obstacle) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
